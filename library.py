@@ -1,5 +1,12 @@
 import numpy
+import math
 
+def l_2(w):
+    return math.sqrt(sum([val ** 2 for val in w]))
+
+def avg(l):
+    return float(sum(l))/len(l)
+    
 def load_data(filename):
     f = open(filename, "r")
     print "Reading from file " + filename
