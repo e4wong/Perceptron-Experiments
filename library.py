@@ -7,6 +7,14 @@ def l_2(w):
 def avg(l):
     return float(sum(l))/len(l)
     
+default_output_file = "output"
+def output_final_w(wstar):
+    f = open(default_output_file,'w')
+    wstarconfig = "//w* is " + str(wstar)
+    wstarconfig = wstarconfig.replace("\n", "")
+    wstarconfig = wstarconfig.replace(",", "")
+    f.write(wstarconfig)
+
 def load_data(filename):
     f = open(filename, "r")
     print "Reading from file " + filename

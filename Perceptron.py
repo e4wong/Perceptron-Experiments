@@ -135,9 +135,9 @@ def main():
         print "Length of Test Set:", len(test_set)
         print "Length of Validation Set:", len(validation_set)
         print "Length of Training Set:", (len(training_set))
-        default_policy = "large"
+        default_policy = "random"
 
-        (w_result, error_rate_trace) = perceptron(training_set, test_set, num_updates, default_policy)
+        (w_result, error_rate_trace, margin_trace) = perceptron(training_set, test_set, num_updates, default_policy)
 
         print "Error Rate of resulting w:", calc_error_rate(w_result, test_set)
         print "Error Rate of w*:", calc_error_rate(wstar, test_set)
@@ -147,6 +147,13 @@ def main():
         f_0.canvas.set_window_title(title)
         plt.plot(error_rate_trace)
         plt.ylabel('Error Rate Trace')
+
+        f_1 = plt.figure(1)
+        f_1.canvas.set_window_title(title)
+        plt.plot(margin_trace)
+        plt.ylabel("Abs(Margin)")
+
+        output_final_w(w_result)
         plt.show()
     elif len(sys.argv) == 4:
         filename = sys.argv[1]
